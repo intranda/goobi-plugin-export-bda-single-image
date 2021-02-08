@@ -25,7 +25,7 @@ import de.sub.goobi.config.ConfigPlugins;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ ConfigPlugins.class })
 @PowerMockIgnore({ "javax.management.*", "javax.net.ssl.*" })
-public class SampleValidationPluginTest {
+public class SingleImageExportPluginTest {
 
     @Rule
     public TemporaryFolder folder = new TemporaryFolder();
@@ -49,12 +49,12 @@ public class SampleValidationPluginTest {
 
     @Test
     public void testConstructor() {
-        SampleValidationPlugin plugin = new SampleValidationPlugin();
+        SingleImageExportPlugin plugin = new SingleImageExportPlugin();
         assertNotNull(plugin);
     }
 
     private XMLConfiguration getConfig() {
-        String file = "plugin_intranda_validation_sample.xml";
+        String file = "plugin_intranda_export_bdaSingleImage.xml";
         XMLConfiguration config = new XMLConfiguration();
         config.setDelimiterParsingDisabled(true);
         try {

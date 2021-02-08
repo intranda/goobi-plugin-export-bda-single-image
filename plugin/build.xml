@@ -2,52 +2,14 @@
 <project default="devbuild">
 
 	<!-- Simply set the name of the plugin here, e.g. "fileUpload" or "file_upload") instead of "sample" -->
-	<property name="name" value="sample" />
+	<property name="name" value="bdaSingleImage" />
 
 	<!-- Use this task to let ant copy the compiled jar files to the target folders for development  -->
 	<target name="devbuild">
 		<exec executable="mvn">
 			<arg value="package"/>
 		</exec>
-		<copy file="target/plugin_intranda_validation_${name}.jar" todir="/opt/digiverso/goobi/plugins/validation/" overwrite="true"/>
+		<copy file="target/plugin_intranda_export_${name}.jar" todir="/opt/digiverso/goobi/plugins/export/" overwrite="true"/>
 	</target>
 
-	<!-- Use this task to let configuration, plugin, user interface files and maven artifact be renamed to your plugin name -->
-	<target name="rename">
-		<replace file="pom.xml" token="&lt;artifactId&gt;sample" value="&lt;artifactId&gt;${name}" />
-
-		<replace file="pom.xml" token="goobi-plugin-validation-sample" value="goobi-plugin-validation-${name}" />
-		<replace file="pom.xml" token="&lt;artifactId&gt;sample" value="&lt;artifactId&gt;${name}" />
-		<replace file="pom.xml" token="&lt;jar.name&gt;plugin_intranda_validation_sample" value="&lt;jar.name&gt;plugin_intranda_validation_${name}" />
-
-		<move file="plugin_intranda_validation_sample.xml" tofile="plugin_intranda_validation_${name}.xml" failonerror="false"/>
-
-		<script language="javascript">
-				var words = project.getProperty("name").split("_");
-			var name = "";
-			for (i = 0; i &lt; words.length; i++) {
-				name += words[i].replace( /^.|\s\S/g, function(a) { return a.toUpperCase(); });
-						}
-			project.setProperty("capitalize", name);
-		</script>
-
-		<move file="src/main/java/de/intranda/goobi/plugins/SampleValidationPlugin.java" tofile="src/main/java/de/intranda/goobi/plugins/${capitalize}ValidationPlugin.java" failonerror="false"/>
-		<replace file="src/main/java/de/intranda/goobi/plugins/${capitalize}ValidationPlugin.java" token="SampleValidationPlugin" value="${capitalize}ValidationPlugin" />
-		<replace file="src/main/java/de/intranda/goobi/plugins/${capitalize}ValidationPlugin.java" token="intranda_validation_sample" value="intranda_validation_${name}" />
-		<replace file="src/main/java/de/intranda/goobi/plugins/${capitalize}ValidationPlugin.java" token="plugin_validation_sample" value="plugin_validation_${name}" />
-		<replace file="src/main/java/de/intranda/goobi/plugins/${capitalize}ValidationPlugin.java" token="Sample validation plugin" value="${capitalize} validation plugin" />
-
-		<move file="src/test/java/de/intranda/goobi/plugins/SampleValidationPluginTest.java" tofile="src/test/java/de/intranda/goobi/plugins/${capitalize}ValidationPluginTest.java" failonerror="false"/>
-		<replace file="src/test/java/de/intranda/goobi/plugins/${capitalize}ValidationPluginTest.java" token="SampleValidationPlugin" value="${capitalize}ValidationPlugin" />
-
-		<replace file="../README.md" token="plugin-validation-sample" value="plugin-validation-${name}" />
-		<replace file="../README.md" token="intranda_validation_sample" value="intranda_validation_${name}" />
-		<replaceregexp file="../README.md" match="This is the(.*?)interface." flags="gs"
-			replace="This is the ${capitalize} Goobi validation plugin. A description for this plugin is still missing." />
-		<replaceregexp file="../README.md" match="## KICKSTART(.*?)## Plugin details" flags="gs" replace="## Plugin details" />
-
-		<replace file=".project" token="A-goobi-plugin-validation-sample" value="goobi-plugin-validation-${name}" />
-		<replaceregexp file="build.xml" match="\t&lt;!-- Use this task to let configuration(.*?)&lt;/project&gt;" flags="gs" replace="&lt;/project&gt;" />
-
-	</target>
 </project>
