@@ -170,7 +170,7 @@ public class SingleImageExportPlugin implements IExportPlugin, IPlugin {
             }
             // find image for the child element
             DocStruct image = picture.getAllToReferences().get(0).getTarget();
-            String filename = Paths.get(image.getImageName()).getFileName().toString();
+            String filename = Paths.get(image.getImageName()).getFileName().toString().replace(".JPG", ".jpg");
 
             // create new physical element
 
