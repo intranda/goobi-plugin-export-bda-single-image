@@ -36,6 +36,7 @@ import ugh.exceptions.DocStructHasNoTypeException;
 import ugh.exceptions.MetadataTypeNotAllowedException;
 import ugh.exceptions.PreferencesException;
 import ugh.exceptions.ReadException;
+import ugh.exceptions.TypeNotAllowedAsChildException;
 import ugh.exceptions.TypeNotAllowedForParentException;
 import ugh.exceptions.WriteException;
 import ugh.fileformats.mets.MetsModsImportExport;
@@ -170,7 +171,7 @@ public class SingleImageExportPlugin implements IExportPlugin, IPlugin {
             }
             // find image for the child element
             DocStruct image = picture.getAllToReferences().get(0).getTarget();
-            String filename = Paths.get(image.getImageName()).getFileName().toString().replace(".JPG", ".jpg");
+            String filename = Paths.get(image.getImageName()).getFileName().toString().replace(".JPG", ".jpg").replace(".tif", ".jpg").replace(".TIF", ".jpg");
 
             // create new physical element
 
@@ -182,13 +183,17 @@ public class SingleImageExportPlugin implements IExportPlugin, IPlugin {
 
             DocStruct page = dd.createDocStruct(pageType);
             page.setImageName(filename);
+            try {
+                physical.addChild(page);
+            } catch (TypeNotAllowedAsChildException e) {
 
+            }
             // physical order
             MetadataType mdt = prefs.getMetadataTypeByName("physPageNumber");
             Metadata mdTemp = new Metadata(mdt);
             mdTemp.setValue("1");
             page.addMetadata(mdTemp);
-
+            dosctruct.addReferenceTo(page, "logical_physical");
             // logical page no
             mdt = prefs.getMetadataTypeByName("logicalPageNumber");
             mdTemp = new Metadata(mdt);
@@ -205,7 +210,7 @@ public class SingleImageExportPlugin implements IExportPlugin, IPlugin {
                 StorageProvider.getInstance().createDirectories(path);
             }
             Path sourceImageFile = Paths.get(process.getImagesTifDirectory(true), filename);
-            Path destinationImageFolder = Paths.get(exportFolder, photographIdentifier);
+            Path destinationImageFolder = Paths.get(exportFolder, photographIdentifier+"_tif");
             if (!StorageProvider.getInstance().isFileExists(destinationImageFolder)) {
                 StorageProvider.getInstance().createDirectories(destinationImageFolder);
             }
@@ -226,7 +231,7 @@ public class SingleImageExportPlugin implements IExportPlugin, IPlugin {
     private boolean writeMetsFile(Process process, Prefs prefs, String exportFolder, MetsModsImportExport mm) {
         try {
             VariableReplacer vp = new VariableReplacer(mm.getDigitalDocument(), prefs, process, null);
-
+            mm.setWriteLocal(false);
             List<ProjectFileGroup> myFilegroups = process.getProjekt().getFilegroups();
 
             if (myFilegroups != null && myFilegroups.size() > 0) {
