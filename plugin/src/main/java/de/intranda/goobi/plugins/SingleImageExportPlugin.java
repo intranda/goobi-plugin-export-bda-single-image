@@ -165,13 +165,58 @@ public class SingleImageExportPlugin implements IExportPlugin, IPlugin {
                     }
                 }
             }
+            Metadata categoryCombined = null;
+            String cat1 = null;
+            String cat2 = null;
+            String cat3 = null;
+            for (Metadata md : dosctruct.getAllMetadata()) {
+
+                if (md.getType().getName().equals("MainCategory1")) {
+                    cat1 = md.getValue();
+                } else if (md.getType().getName().equals("MainCategory2")) {
+                    cat2 = md.getValue();
+                } else if (md.getType().getName().equals("MainCategory3")) {
+                    cat3 = md.getValue();
+                } else if (md.getType().getName().equals("_CategoryCombined")) {
+                    categoryCombined = md;
+                }
+            }
+            StringBuilder categories = new StringBuilder();
+
+            if (StringUtils.isNotBlank(cat1)) {
+                categories.append(cat1.replace("#", ""));
+            }
+            if (StringUtils.isNotBlank(cat2)) {
+                categories.append("#");
+                categories.append(cat2);
+            }
+            if (StringUtils.isNotBlank(cat3)) {
+                categories.append("#");
+                categories.append(cat3);
+            }
+
+
+
+            if (categoryCombined == null ) {
+                try {
+                    categoryCombined = new Metadata(prefs.getMetadataTypeByName("_CategoryCombined"));
+                    categoryCombined.setValue(categories.toString());
+                    dosctruct.addMetadata(categoryCombined);
+                } catch (MetadataTypeNotAllowedException | DocStructHasNoTypeException e) {
+                    log.error(e);
+                }
+            } else {
+                categoryCombined.setValue(categories.toString());
+            }
+
             if (picture.getAllToReferences() == null || picture.getAllToReferences().isEmpty()) {
                 problems.add("No image linked to photograph, abort.");
                 return false;
             }
             // find image for the child element
             DocStruct image = picture.getAllToReferences().get(0).getTarget();
-            String filename = Paths.get(image.getImageName()).getFileName().toString().replace(".JPG", ".jpg").replace(".tif", ".jpg").replace(".TIF", ".jpg");
+            String filename =
+                    Paths.get(image.getImageName()).getFileName().toString().replace(".JPG", ".jpg").replace(".tif", ".jpg").replace(".TIF", ".jpg");
 
             // create new physical element
 
@@ -210,7 +255,7 @@ public class SingleImageExportPlugin implements IExportPlugin, IPlugin {
                 StorageProvider.getInstance().createDirectories(path);
             }
             Path sourceImageFile = Paths.get(process.getImagesTifDirectory(true), filename);
-            Path destinationImageFolder = Paths.get(exportFolder, photographIdentifier+"_tif");
+            Path destinationImageFolder = Paths.get(exportFolder, photographIdentifier + "_tif");
             if (!StorageProvider.getInstance().isFileExists(destinationImageFolder)) {
                 StorageProvider.getInstance().createDirectories(destinationImageFolder);
             }
