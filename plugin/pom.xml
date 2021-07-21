@@ -6,7 +6,7 @@
   <properties>
     <jar.name>plugin_intranda_export_bdaSingleImage</jar.name>
     <dest.folder>/opt/digiverso/goobi/plugins/export/</dest.folder>
-    <goobi.version>21.06.6</goobi.version>
+    <goobi.version>21.06.7</goobi.version>
   </properties>
   <distributionManagement>
     <repository>
@@ -45,6 +45,46 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.12.4</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>buildnumber-maven-plugin</artifactId>
+        <version>1.4</version>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>create</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <shortRevisionLength>10</shortRevisionLength>
+          <doCheck>false</doCheck>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Build-Time>${maven.build.timestamp}</Build-Time>
+            </manifestEntries>
+            <manifestSections>
+              <manifestSection>
+                <name>Versions</name>
+                <manifestEntries>
+                  <Implementation-Version>${project.version}</Implementation-Version>
+                  <Implementation-SCM-Revision>${buildNumber}</Implementation-SCM-Revision>
+                  <Implementation-SCM-Branch>${scmBranch}</Implementation-SCM-Branch>
+                  <Goobi-Version>${goobi.version}</Goobi-Version>
+                </manifestEntries>
+              </manifestSection>
+            </manifestSections>
+          </archive>
+        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -88,5 +128,9 @@
       <version>1.7.4</version>
       <scope>test</scope>
     </dependency>
-  </dependencies>
+</dependencies>
+ <scm>
+    <url>scm:git:ssh://git@gitea.intranda.com:goobi-workflow/goobi-plugin-export-bda-singelImage.git</url>
+    <connection>scm:git:ssh://git@gitea.intranda.com:goobi-workflow/goobi-plugin-export-bda-singelImage.git</connection>
+  </scm>
 </project>
