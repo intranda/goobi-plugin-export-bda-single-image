@@ -128,5 +128,9 @@
       <version>1.7.4</version>
       <scope>test</scope>
     </dependency>
-  </dependencies>
+</dependencies>
+ <scm>
+    <url>scm:git:ssh://git@gitea.intranda.com:goobi-workflow/goobi-plugin-export-bda-singelImage.git</url>
+    <connection>scm:git:ssh://git@gitea.intranda.com:goobi-workflow/goobi-plugin-export-bda-singelImage.git</connection>
+  </scm>
 </project>
