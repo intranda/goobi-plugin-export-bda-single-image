@@ -15,8 +15,8 @@ Detail | Description
 **Plugin identifier**       | intranda_validation_sample
 **Plugin type**             | Validation plugin
 **Licence**                 | GPL 2.0 or newer  
-**Documentation (German)**  | - no documentation available -
-**Documentation (English)** | - no documentation available -
+**Documentation (German)**  | https://docs.goobi.io/goobi-workflow-plugins-de/export/intranda_export_bda_singleimage
+**Documentation (English)** | https://docs.goobi.io/goobi-workflow-plugins-en/export/intranda_export_bda_singleimage
 
 ## Goobi details
 
