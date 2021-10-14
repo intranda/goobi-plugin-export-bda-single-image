@@ -1,6 +1,6 @@
 ---
 description: >-
-  This Export Plugin for Goobi workflow executes a specific export of Goobi processes as multiple METS files per process which was developed for the BDA in Austria. Each structure element results in its own METS file. 
+  This Export Plugin for Goobi workflow executes a specific export of Goobi processes as multiple METS files per process which was developed for the Federal Monuments Office in Austria. Each structure element results in its own METS file. 
   
 ---
 
