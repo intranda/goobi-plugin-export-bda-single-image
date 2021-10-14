@@ -3,7 +3,7 @@ Goobi workflow Plugin: goobi-plugin-export-bda-singleImage
 
 <img src="https://goobi.io/wp-content/uploads/logo_goobi_plugin.png" align="right" style="margin:0 0 20px 20px;" alt="Plugin for Goobi workflow" width="175" height="109">
 
-This Export Plugin for Goobi workflow executes a specific export of Goobi processes as multiple METS files per process which was developed for the BDA in Austria. Each structure element results in its own METS file. 
+This Export Plugin for Goobi workflow executes a specific export of Goobi processes as multiple METS files per process which was developed for the Federal Monuments Office in Austria. Each structure element results in its own METS file. 
 
 This is a plugin for Goobi workflow, the open source workflow tracking software for digitisation projects. More information about Goobi workflow is available under https://goobi.io. If you want to get in touch with the user community simply go to https://community.goobi.io.
 
