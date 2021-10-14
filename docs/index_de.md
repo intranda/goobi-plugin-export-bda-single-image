@@ -1,6 +1,6 @@
 ---
 description: >-
-  Dieses Export-Plugin für den Goobi-Workflow führt einen spezifischen Export von Goobi-Prozessen als mehrere METS-Dateien pro Prozess aus, der für die BDA in Österreich entwickelt wurde. Jedes Strukturelement ergibt dabei eine eigene METS-Datei.
+  Dieses Export-Plugin für den Goobi-Workflow führt einen spezifischen Export von Goobi-Prozessen als mehrere METS-Dateien pro Prozess aus, der für das Bundesdenkmalamt in Österreich entwickelt wurde. Jedes Strukturelement ergibt dabei eine eigene METS-Datei.
   
 ---
 
