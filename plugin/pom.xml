@@ -6,7 +6,7 @@
   <properties>
     <jar.name>plugin_intranda_export_bdaSingleImage</jar.name>
     <dest.folder>/opt/digiverso/goobi/plugins/export/</dest.folder>
-    <goobi.version>22.05.7</goobi.version>
+    <goobi.version>22.06</goobi.version>
   </properties>
   <distributionManagement>
     <repository>
