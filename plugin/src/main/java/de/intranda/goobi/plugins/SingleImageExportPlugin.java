@@ -97,7 +97,7 @@ public class SingleImageExportPlugin implements IExportPlugin, IPlugin {
             DigitalDocument dd = ff.getDigitalDocument();
             mainElement = dd.getLogicalDocStruct();
             replacer = new VariableReplacer(dd, prefs, process, null);
-        } catch (ReadException | PreferencesException | WriteException | IOException | InterruptedException | SwapException | DAOException e) {
+        } catch (ReadException | PreferencesException | IOException | SwapException e) {
             log.error(e);
             problems.add("Cannot read metadata file.");
             return false;
@@ -195,9 +195,7 @@ public class SingleImageExportPlugin implements IExportPlugin, IPlugin {
                 categories.append(cat3);
             }
 
-
-
-            if (categoryCombined == null ) {
+            if (categoryCombined == null) {
                 try {
                     categoryCombined = new Metadata(prefs.getMetadataTypeByName("_CategoryCombined"));
                     categoryCombined.setValue(categories.toString());
