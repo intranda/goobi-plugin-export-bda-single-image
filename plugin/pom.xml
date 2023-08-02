@@ -2,11 +2,11 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.intranda.goobi.plugins.export</groupId>
   <artifactId>bdaSingleImage</artifactId>
-  <version>23.05.3</version>
+  <version>23.07</version>
   <properties>
     <jar.name>plugin_intranda_export_bdaSingleImage</jar.name>
     <dest.folder>/opt/digiverso/goobi/plugins/export/</dest.folder>
-    <goobi.version>23.05.3</goobi.version>
+    <goobi.version>23.07</goobi.version>
   </properties>
   <distributionManagement>
     <repository>
