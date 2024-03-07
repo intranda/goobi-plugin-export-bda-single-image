@@ -7,7 +7,7 @@
     <relativePath />
   </parent>
   <groupId>io.goobi.workflow.plugin</groupId>
-  <artifactId>plugin-export-bdaSingleImage</artifactId>
+  <artifactId>plugin-export-bda-single-image</artifactId>
   <packaging>pom</packaging>
   <modules>
     <module>module-base</module>
