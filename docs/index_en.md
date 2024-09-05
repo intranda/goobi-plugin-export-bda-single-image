@@ -2,7 +2,7 @@
 title: Single Page Export
 identifier: intranda_export_singleImage
 published: true
-description: This Export Plugin for Goobi workflow executes a specific export of Goobi processes as multiple METS files per process which was developed for the Federal Office for the Protection of Monuments in Austria. Each structure element results in its own METS file. 
+description: This export plugin for Goobi workflow generates a specific export of individual pages as several METS files per process. Each structural element results in a separate METS file.
 ---
 ## Introduction
 This plugin is used for a special export of multiple METS files per process. From a single METS file within Goobi workflow, a separate METS file with the associated image files is created during the export for each structural element contained.

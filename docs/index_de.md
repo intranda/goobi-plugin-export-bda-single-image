@@ -1,8 +1,8 @@
 ---
-title: Enzelseitenexport
+title: Einzelseitenexport
 identifier: intranda_export_singleImage
 published: true
-description: Dieses Export-Plugin für den Goobi-Workflow führt einen spezifischen Export von Goobi-Prozessen als mehrere METS-Dateien pro Prozess aus, der für das Bundesdenkmalamt in Österreich entwickelt wurde. Jedes Strukturelement ergibt dabei eine eigene METS-Datei.
+description: Dieses Export Plugin für Goobi workflow erzeugt einen spezifischen Export von Einzelseiten als mehrere METS-Dateien pro Vorgang. Jedes Strukturelement resultiert dabei in einer eigenen METS-Datei.
 ---
 ## Einführung
 Dieses Plugin dient für einen speziellen Export von mehreren METS-Dateien pro Vorgang. Aus einer einzigen METS-Datei innerhalb von Goobi workflow entstehen so während des Exports für jedes enthaltene Strukturelement eine eigene METS-Datei mit den zugehörigen Bilddateien.
