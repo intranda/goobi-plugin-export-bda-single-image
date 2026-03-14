@@ -11,7 +11,7 @@ keywords:
 ## Einführung
 Dieses Plugin dient für einen speziellen Export von mehreren METS-Dateien pro Vorgang. Aus einer einzigen METS-Datei innerhalb von Goobi workflow entstehen so während des Exports für jedes enthaltene Strukturelement eine eigene METS-Datei mit den zugehörigen Bilddateien.
 
-Diese Plugin wurde für das Bundesdenkmalamt in Österreich entwickelt und ist funktionell auf dessen Bedürfnisse ausgerichtet und somit gegebenenfalls nicht für andere Anwendungsfälle unmittelbar einsetzbar.
+Dieses Plugin wurde für das Bundesdenkmalamt in Österreich entwickelt und ist funktionell auf dessen Bedürfnisse ausgerichtet und somit gegebenenfalls nicht für andere Anwendungsfälle unmittelbar einsetzbar.
 
 
 ## Installation
